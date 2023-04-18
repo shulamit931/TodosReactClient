@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "http://localhost:3000"
+const apiUrl = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = apiUrl;
 setAuthorizationBearer();
