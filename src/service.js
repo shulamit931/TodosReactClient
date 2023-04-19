@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "https://todosserver.onrender.com"
+const apiUrl = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = apiUrl;
 setAuthorizationBearer();
