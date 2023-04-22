@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API;
 
-axios.defaults.baseURL = apiUrl;
+axios.defaults.baseURL = process.env.REACT_APP_API;
 setAuthorizationBearer();
 
 function saveAccessToken(authResult) {
