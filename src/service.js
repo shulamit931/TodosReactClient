@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL = process.env.REACT_APP_API;
+//axios.defaults.baseURL = process.env.REACT_APP_API;
 setAuthorizationBearer();
 
 function saveAccessToken(authResult) {
@@ -24,7 +24,7 @@ function setAuthorizationBearer() {
 export default {
 
   login: async (username, password) => {
-    const result = await axios.post(`/login`, { UserName: username, Password: password })
+    const result = await axios.post(`${process.env.REACT_APP_API}/login`, { UserName: username, Password: password })
     console.log(result, "result");
     if (result?.data) {
       saveAccessToken(result.data)
@@ -34,7 +34,7 @@ export default {
 
   },
   Register: async (username, password) => {
-    const result = await axios.post(`/register`, { UserName: username, Password: password })
+    const result = await axios.post(`${process.env.REACT_APP_API}/register`, { UserName: username, Password: password })
     console.log(result, "result");
     if (result?.data) {
       console.log(result.data)
@@ -44,25 +44,25 @@ export default {
     return false;
   },
   getTasks: async () => {
-    const result = await axios.get(`/items`)
+    const result = await axios.get(`${process.env.REACT_APP_API}/items`)
     console.log(result, "result");
     return result.data;
   },
 
   addTask: async (name) => {
     console.log('addTask', name)
-    await axios.post(`/items`, { Name: name, IsComplete: false })
+    await axios.post(`${process.env.REACT_APP_API}/items`, { Name: name, IsComplete: false })
     return {};
   },
 
   setCompleted: async (id, isComplete) => {
     console.log('setCompleted', { id, isComplete })
-    await axios.put(`/items/${id}`, { Id: id, IsCompleted: isComplete })
+    await axios.put(`${process.env.REACT_APP_API}/items/${id}`, { Id: id, IsCompleted: isComplete })
     return {};
   },
 
   deleteTask: async (id) => {
     console.log('deleteTask')
-    await axios.delete(`/items/${id}`)
+    await axios.delete(`${process.env.REACT_APP_API}/items/${id}`)
   }
 };
