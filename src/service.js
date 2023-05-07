@@ -49,7 +49,7 @@ export default {
 
   addTask: async (name) => {
     console.log('addTask', name)
-    await axios.post(`${process.env.REACT_APP_API}/items`, { Name: name, IsComplete: false })
+    await axios.post(`${process.env.REACT_APP_API}/items`, { Name: name, IsCompleted: false })
     return {};
   },
 
